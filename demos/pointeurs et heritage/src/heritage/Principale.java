@@ -5,6 +5,7 @@ package heritage;
  * Created by thomas on 9/11/17.
  */
 public class Principale {
+
     public static void main(String[] args) {
 
         Bien[] biens = new Bien[3];
@@ -17,7 +18,10 @@ public class Principale {
         biens[1] = chaise;
         biens[2] = javaPourLesNuls;
 
+        System.out.println("*************************");
         System.out.println("Facture =  " + calculerFacture(biens));
+        System.out.println("*************************");
+        System.out.println();
 
     }
 

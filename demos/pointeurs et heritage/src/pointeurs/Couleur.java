@@ -4,6 +4,7 @@ package pointeurs;
  * Created by thomas on 9/10/17.
  */
 public class Couleur {
+
     private int rouge;
     private int vert;
     private int bleu;
@@ -18,6 +19,12 @@ public class Couleur {
         setRouge( rouge );
         setVert( vert );
         setBleu( bleu );
+    }
+
+    public Couleur( Couleur couleur){
+        setRouge(couleur.getRouge());
+        setVert(couleur.getVert());
+        setBleu(couleur.getBleu());
     }
 
     public int getBleu(){
