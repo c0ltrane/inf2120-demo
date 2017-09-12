@@ -1,8 +1,8 @@
-## Demo [INF2120] Programmation II - Session Automne 2017 (http://www.etudier.uqam.ca/cours?sigle=INF2120&p=7416)
+## Demo [INF2120](http://www.etudier.uqam.ca/cours?sigle=INF2120&p=7416) Programmation II - Session Automne 2017
 
 ### Sommaire
 
-1. Demo 1 - [Pointeurs et Heritage] (demos/pointeurs et heritage)
+1. Demo 1 - [Pointeurs et Heritage](demos/pointeurs et heritage)
 2. Demo 2 - Classes abstraites
 3. Demo 3 - Type generique et ArrayList
 4. Demo 4 - Interface
@@ -17,8 +17,8 @@
 
 ### Liens utiles pour le cours
 
-[Site de Bruno Malenfant] (http://www.labunix.uqam.ca/~malenfant_b/inf2120/inf2120.html)
+[Site de Bruno Malenfant](http://www.labunix.uqam.ca/~malenfant_b/inf2120/inf2120.html)
 
-[Enonce des demos] (http://www.labunix.uqam.ca/~malenfant_b/inf2120/demo15.pdf)
+[Enonce des demos](http://www.labunix.uqam.ca/~malenfant_b/inf2120/demo15.pdf)
 
-[IntelliJ download] (https://www.jetbrains.com/idea/download)
+[IntelliJ download](https://www.jetbrains.com/idea/download)
