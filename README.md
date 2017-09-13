@@ -22,3 +22,5 @@
 [Enonce des demos](http://www.labunix.uqam.ca/~malenfant_b/inf2120/demo15.pdf)
 
 [IntelliJ download](https://www.jetbrains.com/idea/download)
+
+[Tutoriel](https://openclassrooms.com/courses/apprenez-a-programmer-en-java) pour apprendre les bases de Java
