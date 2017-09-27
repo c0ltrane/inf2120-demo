@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 public class Principal {
     public static void main(String[] args) {
 
+        double x = 3.14555;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.FLOOR);
 
