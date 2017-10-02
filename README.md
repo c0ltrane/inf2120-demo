@@ -5,7 +5,7 @@
 1. Demo 1 - [Pointeurs et Heritage](/demos/pointeurs-heritage)
 2. Demo 2 - [Classes abstraites](/demos/classes-abstraites)
 3. Demo 3 - [Type generique et ArrayList](/demos/typesgeneriques-arraylist)
-4. Demo 4 - Interface
+4. Demo 4 - [Interface](/demos/interface)
 5. Demo 5 - TDA
 6. Demo 6 - Preparation a l'intra
 7. Demo 7 - Iterateur et Recursion
