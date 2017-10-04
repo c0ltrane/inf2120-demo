@@ -8,5 +8,6 @@ public interface Nombre <N> {
     N sub (N x);
     N mul (N x);
     N div (N x);
-    N getElementNeutre();
+    N getElementNeutreAddition();
+    N getElementNeutreMult();
 }

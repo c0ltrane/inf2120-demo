@@ -13,8 +13,12 @@ public class Fraction implements Nombre<Fraction> {
         set_numerateur(_numerateur);
     }
 
-    public Fraction getElementNeutre(){
+    public Fraction getElementNeutreAddition(){
         return new Fraction(0,1);
+    }
+
+    public Fraction getElementNeutreMult(){
+        return new Fraction(1,1);
     }
 
     public Fraction add(Fraction x){

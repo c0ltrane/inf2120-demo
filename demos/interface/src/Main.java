@@ -18,6 +18,7 @@ public class Main {
             add(new NDouble(8.0));
         }};
         System.out.println("Somme des nDoubles: " + somme(nDoubles));
+        System.out.println("Somme avancee des nDoubles: " + sommeAvancee(nDoubles));
 
         ArrayList<Fraction> fractions = new ArrayList<Fraction>(){{
             add(new Fraction(1, 1));
@@ -30,16 +31,23 @@ public class Main {
             add(new Fraction(1,128));
         }};
         System.out.println("Somme des fractions: " + somme(fractions) + " (ou a peu pres 2)");
+        System.out.println("Somme avancee des fractions: " + sommeAvancee(fractions) + " (ou a peu pres 2)");
 
     }
+
     public static < N extends Nombre< N > > Nombre< N > somme( ArrayList< N > tableau ){
         Nombre<N> resultat = null;
         if (!tableau.isEmpty()) {
-            resultat = tableau.get(0).getElementNeutre();
+            resultat = tableau.get(0).getElementNeutreAddition();
             for(N nombre: tableau){
                 resultat = resultat.add(nombre);
             }
         }
         return resultat;
+    }
+
+    public static < N extends Nombre< N > > Nombre< N > sommeAvancee( ArrayList< N > tableau ){
+        N elementNeutre = tableau.get(0).getElementNeutreAddition();
+        return !tableau.isEmpty() ?  tableau.stream().reduce(elementNeutre, (a,b)->a.add(b)) : null;
     }
 }

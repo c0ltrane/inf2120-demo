@@ -10,8 +10,12 @@ public class NDouble implements Nombre<NDouble> {
         this._valeur = _valeur;
     }
 
-    public NDouble getElementNeutre(){
-       return new NDouble(0);
+    public NDouble getElementNeutreAddition(){
+        return new NDouble(0);
+    }
+
+    public NDouble getElementNeutreMult(){
+        return new NDouble(1);
     }
 
     public double get_valeur() {
