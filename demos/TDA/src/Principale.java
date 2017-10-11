@@ -35,7 +35,7 @@ public class Principale {
         }
         try {
             if(imprimante.tete() != document1 ){
-                System.out.println( "erreur, le deuxieme element devrait etre le document 2." );
+                System.out.println( "erreur, le premier element devrait etre le document 1." );
             }
         } catch( FileVide e ) {
             System.out.println( "erreur, l'exception ne devrait pas etre lance." );
