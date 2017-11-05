@@ -35,7 +35,7 @@ public class Main {
 
     }
 
-    public static < N extends Nombre< N > > Nombre< N > somme( ArrayList< N > tableau ){
+    public static < N extends Nombre<N> > Nombre< N > somme( ArrayList< N > tableau ){
         Nombre<N> resultat = null;
         if (!tableau.isEmpty()) {
             resultat = tableau.get(0).getElementNeutreAddition();
