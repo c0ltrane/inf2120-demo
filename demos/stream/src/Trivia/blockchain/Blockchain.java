@@ -65,7 +65,7 @@ public class Blockchain {
         return chaine.getLast();
     }
 
-    // verifie que la blockchain est valide et qu'un block frauduleux n'a pas ete ajoute
+    // ici on utilise un stream pour verifier que la blockchain est valide et qu'un block frauduleux n'a pas ete ajoute ou que les donnees d'un bloc n'ont pas ete modifiees
     public boolean chaineEstValide(){
 
         return IntStream.range(1, chaine.size())

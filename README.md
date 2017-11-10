@@ -15,6 +15,11 @@
 11. Demo 11 - ABR
 12. Demo 12 - Tri
 
+
+## Trivia:
+
+[implementation d'une Blockchain](/demos/stream/src/Trivia/blockchain)
+
 ### Liens utiles pour le cours
 
 [Site de Bruno Malenfant](http://www.labunix.uqam.ca/~malenfant_b/inf2120/inf2120.html)
