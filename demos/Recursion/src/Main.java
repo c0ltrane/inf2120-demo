@@ -3,25 +3,32 @@
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(additionner1(5,3));
-        System.out.println(additionner2(10,3));
-        System.out.println(additionnerIter(10,3));
-        System.out.println(pgcdRec1(9,3));
-        System.out.println(pgcdRec2(9,3));
-        System.out.println(pgcdIter(9,3));
-        System.out.println(dec2bin(1024));
-        System.out.println(dec2binIter(1024));
+//        System.out.println(additionner2(-3,-2));
+//        System.out.println(additionner2(10,3));
+        System.out.println(additionnerIter(3,2));
+
+        System.out.println(additionnerIter(3,-2));
+        System.out.println(additionnerIter(-3,-2));
+//        System.out.println(pgcdRec1(9,3));
+//        System.out.println(pgcdRec2(9,3));
+//        System.out.println(pgcdIter(9,3));
+//        System.out.println(dec2bin(4));
+//        System.out.println(dec2binIter(1024));
     }
 
     public static int additionner2 ( int a, int b ) {
         int resultat;
         if ( a == 0 ) {
-            resultat = b;
+
         } else if ( b == 0 ) {
             resultat = a;
         } else if ( a < b ) {
             resultat = additionner2 ( b, a );
-        } else { // a >= b
+        }
+        else if(b < 0){
+            resultat = -1 + additionner2 (a, b + 1);
+        }
+        else { // a >= b
             resultat = 1 + additionner2 ( a, b - 1 );
         }
         return resultat;
@@ -37,6 +44,11 @@ public class Main {
     }
 
     public static int additionnerIter( int n, int m  ) {
+        if(m <0){
+            int temp = n;
+            n = m;
+            m = temp;
+        }
         while( 0 != m ) {
             ++ n;
             -- m;
@@ -87,7 +99,7 @@ public class Main {
         return resultat;
     }
 
-    public static String dec2binIter( int n ) {
+    public static String dec2binItr( int n ) {
         String resultat = 0 == n ? "0" : "";
 
         while( 0 != n ) {
