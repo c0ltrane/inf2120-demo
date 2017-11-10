@@ -16,7 +16,7 @@
 12. Demo 12 - Tri
 
 
-## Trivia:
+### Trivia:
 
 [implementation d'une Blockchain](/demos/stream/src/Trivia/blockchain)
 
