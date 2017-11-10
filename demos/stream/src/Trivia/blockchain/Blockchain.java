@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
  */
 public class Blockchain {
 
-    private List<Block> chaine;
+    private LinkedList<Block> chaine;
     private List<Transaction> transactionsCourantes;
     private int index;
 
@@ -62,7 +62,7 @@ public class Blockchain {
     }
 
     public Block dernierBlock(){
-        return chaine.get(chaine.size()-1);
+        return chaine.getLast();
     }
 
     // verifie que la blockchain est valide et qu'un block frauduleux n'a pas ete ajoute
@@ -104,5 +104,9 @@ public class Blockchain {
                     System.out.println("\n****************\n");
                 });
         System.out.println();
+    }
+
+    public LinkedList<Block> getChaine(){
+        return chaine;
     }
 }

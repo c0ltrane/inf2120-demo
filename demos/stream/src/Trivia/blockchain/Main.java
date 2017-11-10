@@ -8,9 +8,9 @@ public class Main {
         Blockchain blockchain = new Blockchain();
         blockchain.ajouterTransaction("Satoshi Nakamoto", "Elon Musk", 50);
         blockchain.ajouterTransaction("Satoshi Nakamoto", "Barack Obama", 400);
-        blockchain.ajouterTransaction("Barack Obama", "Elon Musk", 40);
+        blockchain.ajouterTransaction("Bill Clinton", "Elon Musk", 40);
         blockchain.ajouterTransaction("Satoshi Nakamoto", "Linus Torvalds", 1000);
-        blockchain.ajouterTransaction("Satoshi Nakamoto", "Barack Obama", 400);
+        blockchain.ajouterTransaction("Bill Clinton", "Barack Obama", 4000);
 
 //        long preuveBidon = 1;
 //        blockchain.ajouterBlock(preuveBidon, blockchain.dernierBlock().hashCode()); // donnera une erreur ! la chaine ne sera pas valide dans ce cas
@@ -40,6 +40,13 @@ public class Main {
 
         if(blockchain.chaineEstValideAlt())
             blockchain.afficher();
+
+        System.out.println("!!! Un hacker s'est introduit dans le systeme !!!");
+        blockchain.getChaine().get(1).getTransactions().get(0).quantite = 0; // ici on suppose qu'un agent malfaiteur tente de modifier une transaction ulterieure
+
+        System.out.println("\n/****  Verification de la validite de la BlockChain  ****/");
+        System.out.println("\t>>>>>>>>> Cette chaine est " + (blockchain.chaineEstValide() ? "valide" : "invalide") + " !");
+
 
     }
 

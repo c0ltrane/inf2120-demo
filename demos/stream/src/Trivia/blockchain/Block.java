@@ -36,15 +36,31 @@ public class Block {
         return preuveDeTravail;
     }
 
+    public List<Transaction> getTransactions(){
+        return transactions;
+    }
+
     @Override
     public String toString() {
         return "Block {" +
-                ",\n\tindex=" + index +
-                "\n\ttransactions=" + transactions +
+                "\n\tindex=" + index +
+                ",\n\thashPrecedent=" + hashPrecedent +
                 ",\n\tpreuveDeTravail=" + preuveDeTravail +
-                ",\n\thashPrecedente=" + hashPrecedent +
                 ",\n\ttimestamp=" + timestamp +
+                ",\n\ttransactions=" + transactions +
                 "\n}";
     }
 
+    // ici comme pour une transaction on redefini le hash du bloc pour garantir l'immutabilite de celui-ci
+    // si un agent malveillant modifie ulterieurement un element du bloc le hash sera aussi modifie et ne correspondra
+    // plus au hash dans le bloc suivant
+    @Override
+    public int hashCode() {
+        int result = transactions != null ? transactions.hashCode() : 0;
+        result = 31 * result + (int) (preuveDeTravail ^ (preuveDeTravail >>> 32));
+        result = 31 * result + (int) (hashPrecedent ^ (hashPrecedent >>> 32));
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + index;
+        return result;
+    }
 }

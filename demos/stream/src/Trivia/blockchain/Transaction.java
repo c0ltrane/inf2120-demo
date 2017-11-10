@@ -22,4 +22,16 @@ public class Transaction {
                 ",\n\t\t\tquantite=" + quantite +
                 "\n\t\t}";
     }
+
+
+    // on redefini la methode hashCode pour que le hash reflete le contenu de la transaction
+    // si on modifie ulterieurement une transaction le hash sera modifie et on saura qui'il y a eu modification de la chaine de transactions
+    // cela permet de maintenir la propriete d'immutabilite sur la transaction
+    @Override
+    public int hashCode() {
+        int result = source != null ? source.hashCode() : 0;
+        result = 31 * result + (destinataire != null ? destinataire.hashCode() : 0);
+        result = 31 * result + (int) (quantite ^ (quantite >>> 32));
+        return result;
+    }
 }
