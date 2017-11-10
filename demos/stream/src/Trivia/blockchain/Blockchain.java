@@ -1,6 +1,8 @@
 package Trivia.blockchain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -14,17 +16,19 @@ public class Blockchain {
     private int index;
 
     public Blockchain() {
-        chaine = new ArrayList<>();
+        chaine = new LinkedList<>();
         transactionsCourantes = new ArrayList<>();
         index = 0;
 
-        System.out.println("/****  Creation de la Blcokchain  ****/");
+        System.out.println("/****  Creation de la Blockchain  ****/");
         creerBlockGenese();
     }
 
+    // ici on cree le premier bloc de la blockchain
     private void creerBlockGenese(){
         ajouterBlock(100, 1);
     }
+
 
     public void ajouterBlock(long preuveDeTravail, long hashPrecedente){
 
@@ -49,6 +53,7 @@ public class Blockchain {
         return nouvellePreuve;
     }
 
+    // ici on verifie que la valeur utilisee comme preuve de travail est valide
     public boolean preuveEstValide(long preuvePrecedente, long preuveCourante){
         if(!(preuveCourante % 9 == 0 && preuveCourante % preuvePrecedente == 0)){
            return false;
@@ -68,13 +73,14 @@ public class Blockchain {
                         && preuveEstValide(chaine.get(i-1).getPreuveDeTravail(), chaine.get(i).getPreuveDeTravail()));
     }
 
-    // Cette methode fait la meme chose que la precedente d'une facon alternative sans utiliser les streams
+    // Cette methode fait la meme chose que la precedente d'une facon alternative en utilisant un iterateur
     public boolean chaineEstValideAlt(){
-        Block blockPrecedent = chaine.get(0);
-        int indexCourant = 1;
 
-        while(indexCourant < chaine.size()){
-            Block blockCourant = chaine.get(indexCourant);
+        Iterator<Block> it = chaine.iterator();
+        Block blockPrecedent = it.next();
+
+        while(it.hasNext()){
+            Block blockCourant = it.next();
 
             if(blockCourant.getHashPrecedente() != blockPrecedent.hashCode()){
                 return false;
@@ -84,7 +90,6 @@ public class Blockchain {
                 return false;
             }
             blockPrecedent = blockCourant;
-            indexCourant++;
         }
         return true;
     }

@@ -11,14 +11,14 @@ public class Block {
 
     private List<Transaction> transactions;
     private long preuveDeTravail;
-    private long hashPrecedente;
+    private long hashPrecedent;
     private Timestamp timestamp;
     private int index;
 
 
-    public Block(long preuveDeTravail, long hashPrecedente, List<Transaction> transactions, int index) {
+    public Block(long preuveDeTravail, long hashPrecedent, List<Transaction> transactions, int index) {
         this.preuveDeTravail = preuveDeTravail;
-        this.hashPrecedente = hashPrecedente;
+        this.hashPrecedent = hashPrecedent;
         this.transactions = transactions;
         this.timestamp = new Timestamp(System.currentTimeMillis());
         this.index = index;
@@ -29,7 +29,7 @@ public class Block {
     }
 
     public long getHashPrecedente() {
-        return hashPrecedente;
+        return hashPrecedent;
     }
 
     public long getPreuveDeTravail() {
@@ -42,7 +42,7 @@ public class Block {
                 ",\n\tindex=" + index +
                 "\n\ttransactions=" + transactions +
                 ",\n\tpreuveDeTravail=" + preuveDeTravail +
-                ",\n\thashPrecedente=" + hashPrecedente +
+                ",\n\thashPrecedente=" + hashPrecedent +
                 ",\n\ttimestamp=" + timestamp +
                 "\n}";
     }
