@@ -44,14 +44,7 @@ public class Blockchain {
        transactionsCourantes.add(new Transaction(source, destinataire, quantite));
     }
 
-    public long preuveDeTravail(long preuvePrecedente){
-        long nouvellePreuve = preuvePrecedente + 1;
 
-        while(!(preuveEstValide(preuvePrecedente, nouvellePreuve))){
-            nouvellePreuve += 1;
-        }
-        return nouvellePreuve;
-    }
 
     // ici on verifie que la valeur utilisee comme preuve de travail est valide
     public boolean preuveEstValide(long preuvePrecedente, long preuveCourante){
@@ -108,5 +101,9 @@ public class Blockchain {
 
     public LinkedList<Block> getChaine(){
         return chaine;
+    }
+
+    public List<Transaction> getTransactions(){
+        return transactionsCourantes;
     }
 }
