@@ -45,47 +45,10 @@ public class Blockchain {
     }
 
 
-
-    // ici on verifie que la valeur utilisee comme preuve de travail est valide
-    public boolean preuveEstValide(long preuvePrecedente, long preuveCourante){
-        if(!(preuveCourante % 9 == 0 && preuveCourante % preuvePrecedente == 0)){
-           return false;
-        }
-        return true;
-    }
-
     public Block dernierBlock(){
         return chaine.getLast();
     }
 
-    // ici on utilise un stream pour verifier que la blockchain est valide et qu'un block frauduleux n'a pas ete ajoute ou que les donnees d'un bloc n'ont pas ete modifiees
-    public boolean chaineEstValide(){
-
-        return IntStream.range(1, chaine.size())
-                .allMatch(i -> chaine.get(i).getHashPrecedente() == chaine.get(i-1).hashCode()
-                        && preuveEstValide(chaine.get(i-1).getPreuveDeTravail(), chaine.get(i).getPreuveDeTravail()));
-    }
-
-    // Cette methode fait la meme chose que la precedente d'une facon alternative en utilisant un iterateur
-    public boolean chaineEstValideAlt(){
-
-        Iterator<Block> it = chaine.iterator();
-        Block blockPrecedent = it.next();
-
-        while(it.hasNext()){
-            Block blockCourant = it.next();
-
-            if(blockCourant.getHashPrecedente() != blockPrecedent.hashCode()){
-                return false;
-            }
-
-            if(!preuveEstValide(blockPrecedent.getPreuveDeTravail(), blockCourant.getPreuveDeTravail())){
-                return false;
-            }
-            blockPrecedent = blockCourant;
-        }
-        return true;
-    }
 
     public void afficher(){
         System.out.println();

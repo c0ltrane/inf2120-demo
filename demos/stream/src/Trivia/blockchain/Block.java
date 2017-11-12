@@ -36,6 +36,10 @@ public class Block {
         return preuveDeTravail;
     }
 
+    public String getPreuveDeTravailStringFormat() {
+        return Long.toString(preuveDeTravail);
+    }
+
     public List<Transaction> getTransactions(){
         return transactions;
     }
