@@ -14,8 +14,14 @@ public class Main {
         blockchain.ajouterTransaction("Bill Clinton", "Elon Musk", 40);
         blockchain.ajouterTransaction("Satoshi Nakamoto", "Linus Torvalds", 1000);
         blockchain.ajouterTransaction("Bill Clinton", "Barack Obama", 4000);
+        
+//        long preuveBidon = 1;
+//        blockchain.ajouterBlock(preuveBidon, blockchain.dernierBlock().hashCode()); // donnera une erreur ! la chaine ne sera pas valide dans ce cas
 
-        mineur.miner();
+//        PS: Dans notre code on peut toujours ajouter un bloc avec une preuve non valide mais dans un reseau distribue ce bloc est rejete par les autres mineurs!
+
+        long preuveDeTravail = mineur.miner();
+        blockchain.ajouterBlock(preuveDeTravail, blockchain.dernierBlock().getHashPrecedente());
 
         System.out.println("\n/****  Verification de la validite de la BlockChain  ****/");
         System.out.println("\t>>>>>>>>> Cette chaine est " + (blockchain.chaineEstValide() ? "valide" : "invalide") + " !");
@@ -23,14 +29,15 @@ public class Main {
         if(blockchain.chaineEstValide())
             blockchain.afficher();
 
+
         blockchain.ajouterTransaction("Bill Gates", "Linus Torvalds", 1000);
         blockchain.ajouterTransaction("Bill Gates", "Linus Torvalds", 1000);
         blockchain.ajouterTransaction("Bill Gates", "Linus Torvalds", 1000);
         blockchain.ajouterTransaction("Bill Gates", "Linus Torvalds", 1000);
         blockchain.ajouterTransaction("Linus Torvalds", "Steve Jobs", 1);
 
-
-        mineur.miner();
+        preuveDeTravail = mineur.miner();
+        blockchain.ajouterBlock(preuveDeTravail, blockchain.dernierBlock().getHashPrecedente());
 
         System.out.println("\n/****  Verification de la validite de la BlockChain  ****/");
         System.out.println("\t>>>>>>>>> Cette chaine est " + (blockchain.chaineEstValideAlt() ? "valide" : "invalide") + " !");

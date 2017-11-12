@@ -13,18 +13,10 @@ public class Mineur {
         this.blockchain = chain;
     }
 
-    public void miner(){
+    public long miner(){
 
-//        long preuveBidon = 1;
-//        blockchain.ajouterBlock(preuveBidon, blockchain.dernierBlock().hashCode()); // donnera une erreur ! la chaine ne sera pas valide dans ce cas
 
-//        PS: Dans notre code on peut toujours ajouter un bloc avec une preuve non valide mais dans un reseau distribue ce bloc est rejete par les autres mineurs!
-
-        long preuveDeTravail = preuveDeTravail(blockchain.dernierBlock().getPreuveDeTravail());
-        blockchain.ajouterBlock(preuveDeTravail, blockchain.dernierBlock().hashCode());
-    }
-
-    private long preuveDeTravail(long preuvePrecedente){
+        long preuvePrecedente = blockchain.dernierBlock().getPreuveDeTravail() + 1;
         long nouvellePreuve = preuvePrecedente + 1;
 
         while(!(blockchain.preuveEstValide(preuvePrecedente, nouvellePreuve))){
@@ -32,4 +24,5 @@ public class Mineur {
         }
         return nouvellePreuve;
     }
+
 }
