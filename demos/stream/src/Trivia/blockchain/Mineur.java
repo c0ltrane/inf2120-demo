@@ -3,7 +3,6 @@ package Trivia.blockchain;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.stream.IntStream;
 
 /**
@@ -29,10 +28,12 @@ public class Mineur {
         long preuvePrecedente = blockchain.dernierBlock().getPreuveDeTravail();
         long nouvellePreuve = preuvePrecedente + 1;
 
-        String preuvePrecedenteString = blockchain.dernierBlock().getPreuveDeTravailStringFormat();
+//        String preuvePrecedenteString = blockchain.dernierBlock().getPreuveDeTravailStringFormat();
         String nouvellePreuveString = Long.toString(preuvePrecedente + 1);
+        String hashBlockPrecedent = Long.toString(blockchain.dernierBlock().hashCode());
 
-        while(!(preuveEstValide(preuvePrecedenteString + nouvellePreuveString))){
+        System.out.println("... Minage en cours");
+        while(!(preuveEstValide( hashBlockPrecedent + nouvellePreuveString))){
             nouvellePreuve += 1;
             nouvellePreuveString = Long.toString(nouvellePreuve);
         }
@@ -50,12 +51,12 @@ public class Mineur {
     }
 
     // cette methode verifie si la preuve de travail est valide
-    // la preuve est valide ssi le hash de la concatenation de l'ancienne et de la nouvelle preuve a un prefixe compose de n zeros (sous representation hexadeciamle)
+    // la preuve est valide ssi le hash de la concatenation du hash du block precedent et de la nouvelle preuve a un prefixe compose de n zeros (sous representation hexadeciamle)
     private boolean preuveEstValide(String originalString){
 
         byte[] encodedhash = digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
         String hexDigest = bytesToHex(encodedhash);
-        return hexDigest.substring(0,5).equals("00000"); // ici on peut changer la difficulte de l'algorithme a resoudre en augmentant la taille du prefixe de hexDigest
+        return hexDigest.substring(0,6).equals("000000"); // ici on peut changer la difficulte de l'algorithme a resoudre en augmentant la taille du prefixe de hexDigest
                                                               // ( plus on rajoute de zeros plus le probleme est difficile a resoudre )
     }
 
@@ -64,7 +65,7 @@ public class Mineur {
 
         return IntStream.range(1, blockchain.getChaine().size())
                 .allMatch(i -> blockchain.getChaine().get(i).getHashPrecedente() == blockchain.getChaine().get(i-1).hashCode()
-                        && preuveEstValide(blockchain.getChaine().get(i-1).getPreuveDeTravailStringFormat()
+                        && preuveEstValide(blockchain.getChaine().get(i-1).hashCode()
                             + blockchain.getChaine().get(i).getPreuveDeTravailStringFormat()));
     }
 
@@ -82,7 +83,7 @@ public class Mineur {
                 return false;
             }
 
-            if(!preuveEstValide(blockPrecedent.getPreuveDeTravailStringFormat() + blockCourant.getPreuveDeTravailStringFormat())){
+            if(!preuveEstValide(blockPrecedent.hashCode() + blockCourant.getPreuveDeTravailStringFormat())){
 
                 System.out.println("preuve false");
                 return false;
