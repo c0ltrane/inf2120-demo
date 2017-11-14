@@ -3,6 +3,7 @@ package monStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -14,27 +15,27 @@ import java.util.function.Function;
  *
  */
 
-public class MonStream<U> implements IMonStream<U> {
+public class MaListeStream<U> implements IMonStream<U> {
 
 
     private List<U> conteneur;
 
-    public MonStream(){
+    public MaListeStream(){
         conteneur = new LinkedList<>();
     }
 
-    public MonStream(List<U> ancienConteneur){
+    public MaListeStream(List<U> ancienConteneur){
         conteneur = new LinkedList<>(ancienConteneur);
     }
 
-    public void forEach(Function<U,U> f){
+    public void forEach(Consumer<U> f){
         for (U elem: conteneur) {
-           f.apply(elem);
+           f.accept(elem);
         }
     }
 
     public IMonStream<U> map (Function<U,U> f){
-        MonStream<U> nouveauStream = new MonStream<>();
+        MaListeStream<U> nouveauStream = new MaListeStream<>();
         for(U elem : conteneur){
            nouveauStream.getConteneur().add(f.apply(elem));
         }
@@ -42,7 +43,7 @@ public class MonStream<U> implements IMonStream<U> {
     }
 
     public IMonStream<U> filter (Function<U,Boolean> f){
-        MonStream<U> nouveauStream = new MonStream<>();
+        MaListeStream<U> nouveauStream = new MaListeStream<>();
         for(U elem : conteneur){
             if(f.apply(elem)){
                 nouveauStream.getConteneur().add(elem);
@@ -62,7 +63,6 @@ public class MonStream<U> implements IMonStream<U> {
     public List<U> getConteneur() {
         return conteneur;
     }
-
 
     public List<U> toList(){
         return getConteneur();

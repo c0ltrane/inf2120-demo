@@ -2,6 +2,7 @@ package monStream;
 
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -9,7 +10,7 @@ import java.util.function.Function;
  */
 public interface IMonStream<T> {
 
-    void forEach(Function<T,T> f);
+    void forEach(Consumer<T> f);
     IMonStream<T> map(Function<T,T> f);
     IMonStream<T> filter(Function<T,Boolean> f);
     T reduce(T init, BiFunction<T,T,T> f);

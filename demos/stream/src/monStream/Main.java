@@ -23,10 +23,16 @@ public class Main {
         System.out.println(resultat);
 
         List<String> nouvellesSalutations = salutations.fstream()
+                                                    .filter(s -> s.length() <= 3)
                                                     .map(s -> s.toUpperCase())
                                                     .toList();
         for(String s : nouvellesSalutations){
-            System.out.println(s);
+            System.out.print(s + " ");
         }
+
+        System.out.println();
+        salutations.fstream()
+                .map(s -> s.toUpperCase())
+                .forEach(x -> System.out.print(x + " "));
     }
 }

@@ -9,7 +9,8 @@ import java.util.LinkedList;
  */
 public class MaListe<U> extends LinkedList<U> implements IStreamable<U>{
 
+    @Override
     public IMonStream<U> fstream() {
-        return new MonStream<>(this);
+        return new MaListeStream<>(this);
     }
 }
