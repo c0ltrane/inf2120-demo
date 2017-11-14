@@ -46,7 +46,7 @@ public class Main {
             blockchain.afficher();
 
         System.out.println("!!! Un hacker s'est introduit dans le systeme !!!");
-        blockchain.getChaine().get(1).getTransactions().get(0).quantite = 0; // ici on suppose qu'un agent malfaiteur tente de modifier une transaction ulterieure
+        blockchain.getChaine().get(1).getTransactions().get(0).quantite = 0; // ici on suppose qu'un agent malveillant tente de modifier une transaction ulterieure
 
         System.out.println("\n/****  Verification de la validite de la BlockChain  ****/");
         System.out.println("\t>>>>>>>>> Cette chaine est " + (mineur.chaineEstValide() ? "valide" : "invalide") + " !");
