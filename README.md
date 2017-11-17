@@ -10,7 +10,7 @@
 6. Demo 6 - [Preparation a l'intra](/demos/revisionIntra)
 7. Demo 7 - [Iterateur](demos/iterateur) et [Recursion](demos/Recursion)
 8. Demo 8 - [Stream et abstraction lambda](demos/stream)
-9. Demo 9 - Interface utilisateur
+9. Demo 9 - [Interface utilisateur](demos/interfaceUtilisateur)
 10. Demo 10 - Recherche Binaire
 11. Demo 11 - ABR
 12. Demo 12 - Tri
