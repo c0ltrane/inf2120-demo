@@ -1,5 +1,7 @@
 package Trivia.blockchain;
 
+import java.io.IOException;
+import java.security.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,7 +14,7 @@ import java.util.stream.IntStream;
 public class Blockchain {
 
     private LinkedList<Block> chaine;
-    private List<Transaction> transactionsCourantes;
+    private List<TransactionWrapper> transactionsCourantes;
     private int index;
 
     public Blockchain() {
@@ -40,8 +42,9 @@ public class Blockchain {
 
     }
 
-    public void ajouterTransaction(String source, String destinataire, long quantite){
-       transactionsCourantes.add(new Transaction(source, destinataire, quantite));
+    public void ajouterTransaction(Utilisateur source, Utilisateur destinataire, long quantite) throws SignatureException, IOException, NoSuchAlgorithmException, InvalidKeyException{
+        Transaction nouvelleTransaction = new Transaction(source.cleePublique, destinataire.cleePublique, quantite);
+        transactionsCourantes.add(new TransactionWrapper(nouvelleTransaction, source.signer(nouvelleTransaction)));
     }
 
 
@@ -66,7 +69,7 @@ public class Blockchain {
         return chaine;
     }
 
-    public List<Transaction> getTransactions(){
+    public List<TransactionWrapper> getTransactions(){
         return transactionsCourantes;
     }
 }

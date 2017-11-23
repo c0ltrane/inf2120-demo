@@ -9,14 +9,14 @@ import java.util.List;
  */
 public class Block {
 
-    private List<Transaction> transactions;
+    private List<TransactionWrapper> transactions;
     private long preuveDeTravail;
     private long hashPrecedent;
     private Timestamp timestamp;
     private int index;
 
 
-    public Block(long preuveDeTravail, long hashPrecedent, List<Transaction> transactions, int index) {
+    public Block(long preuveDeTravail, long hashPrecedent, List<TransactionWrapper> transactions, int index) {
         this.preuveDeTravail = preuveDeTravail;
         this.hashPrecedent = hashPrecedent;
         this.transactions = transactions;
@@ -32,15 +32,11 @@ public class Block {
         return hashPrecedent;
     }
 
-    public long getPreuveDeTravail() {
-        return preuveDeTravail;
-    }
-
-    public String getPreuveDeTravailStringFormat() {
+    public String getPreuveDeTravail() {
         return Long.toString(preuveDeTravail);
     }
 
-    public List<Transaction> getTransactions(){
+    public List<TransactionWrapper> getTransactions(){
         return transactions;
     }
 

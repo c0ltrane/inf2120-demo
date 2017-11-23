@@ -3,6 +3,8 @@ package Trivia.blockchain;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 /**
@@ -25,20 +27,20 @@ public class Mineur {
 
     public long miner(){
 
-        long preuvePrecedente = blockchain.dernierBlock().getPreuveDeTravail();
-        long nouvellePreuve = preuvePrecedente + 1;
-
-//        String preuvePrecedenteString = blockchain.dernierBlock().getPreuveDeTravailStringFormat();
-        String nouvellePreuveString = Long.toString(preuvePrecedente + 1);
-        String hashBlockPrecedent = Long.toString(blockchain.dernierBlock().hashCode());
+        long nouvellePreuve = getNewNonce();
+        int hashBlockPrecedent = blockchain.dernierBlock().hashCode();
 
         System.out.println("... Minage en cours");
-        while(!(preuveEstValide( hashBlockPrecedent + nouvellePreuveString))){
+        while(!(preuveEstValide( Integer.toString(hashBlockPrecedent) + Long.toString(nouvellePreuve)))){
             nouvellePreuve += 1;
-            nouvellePreuveString = Long.toString(nouvellePreuve);
         }
         return nouvellePreuve;
     }
+
+    private long getNewNonce(){
+        return ThreadLocalRandom.current().nextLong(Long.MAX_VALUE);
+    }
+
 
     private String bytesToHex(byte[] hash) {
         StringBuffer hexString = new StringBuffer();
@@ -66,7 +68,7 @@ public class Mineur {
         return IntStream.range(1, blockchain.getChaine().size())
                 .allMatch(i -> blockchain.getChaine().get(i).getHashPrecedente() == blockchain.getChaine().get(i-1).hashCode()
                         && preuveEstValide(blockchain.getChaine().get(i-1).hashCode()
-                            + blockchain.getChaine().get(i).getPreuveDeTravailStringFormat()));
+                            + blockchain.getChaine().get(i).getPreuveDeTravail()));
     }
 
     // Cette methode fait la meme chose que la precedente d'une facon alternative en utilisant un iterateur
@@ -83,7 +85,7 @@ public class Mineur {
                 return false;
             }
 
-            if(!preuveEstValide(blockPrecedent.hashCode() + blockCourant.getPreuveDeTravailStringFormat())){
+            if(!preuveEstValide(blockPrecedent.hashCode() + blockCourant.getPreuveDeTravail())){
 
                 System.out.println("preuve false");
                 return false;
