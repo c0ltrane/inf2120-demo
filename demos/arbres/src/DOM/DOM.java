@@ -24,23 +24,20 @@ public class DOM {
     }
 
     public String toHtml(){
-       String html = toHtmlRec(racine, "", 0);
-       return html;
+        String html = "<!doctype html>\n";
+        html += toHtmlRec(racine, "", -1);
+        return html;
     }
 
-    private String toHtmlRec(ABRNoeud noeud, String html, int profondeur){
+    private String toHtmlRec(DOMNoeud<String> noeud, String html, int profondeur){
         profondeur++;
         String tabs = String.join("", Collections.nCopies(profondeur, "\t"));
 
-        html += tabs + "<" + noeud._element + ">" + "\n";
-        if(noeud._gauche != null){
-           html = toHtmlRec(noeud._gauche, html, profondeur);
+        html += tabs + "<" + noeud._tag + ">" + "\n";
+        for (DOMNoeud<String> enfant : noeud._enfants){
+            html = toHtmlRec(enfant, html, profondeur);
         }
-
-        if(noeud._droite != null){
-            html = toHtmlRec(noeud._droite, html, profondeur);
-        }
-        html += tabs + "</" + noeud._element + ">" + "\n";
+        html += tabs + "</" + noeud._tag + ">" + "\n";
         return html;
     }
 }
