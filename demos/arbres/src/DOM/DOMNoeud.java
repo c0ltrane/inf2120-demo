@@ -10,15 +10,26 @@ import java.util.List;
  */
 public class DOMNoeud<E extends Comparable<E> >{
     protected E _tag;
+    protected E _valeur;
     protected List<DOMNoeud> _enfants;
 
-    public DOMNoeud( E elem) {
+    public DOMNoeud(E elem){
         _tag = elem;
         _enfants = new ArrayList<DOMNoeud>();
     }
 
+    public DOMNoeud( E elem, E valeur) {
+        this(elem);
+        _valeur = valeur;
+    }
+
     public void inserer(E elem){
         DOMNoeud<E> nouvelEnfant = new DOMNoeud(elem);
+        _enfants.add(nouvelEnfant);
+    }
+
+    public void inserer(E elem, E valeur){
+        DOMNoeud<E> nouvelEnfant = new DOMNoeud(elem, valeur);
         _enfants.add(nouvelEnfant);
     }
 

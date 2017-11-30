@@ -23,6 +23,10 @@ public class DOM {
         racine.inserer(elem);
     }
 
+    public void inserer(String elem, String valeur){
+        racine.inserer(elem, valeur);
+    }
+
     public String toHtml(){
         String html = "<!doctype html>\n";
         html += toHtmlRec(racine, "", -1);
@@ -34,6 +38,9 @@ public class DOM {
         String tabs = String.join("", Collections.nCopies(profondeur, "\t"));
 
         html += tabs + "<" + noeud._tag + ">" + "\n";
+        if(noeud._valeur != null){
+            html += tabs + "\t" + noeud._valeur + "\n";
+        }
         for (DOMNoeud<String> enfant : noeud._enfants){
             html = toHtmlRec(enfant, html, profondeur);
         }

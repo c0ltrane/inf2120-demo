@@ -8,6 +8,8 @@
 import TDA.ABRNoeud;
 import DOM.*;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -50,16 +52,25 @@ public class Principal {
 
         DOMNoeud<String> body = pageWeb.chercher("body");
 
-        body.inserer("h1");
+        body.inserer("h1", "Hello World!");
         body.inserer("h2");
         body.inserer("div");
 
+        body.chercher("div")
+                .inserer("p", "This is my web page");
+
         System.out.println(pageWeb.toHtml());
+        try{
+            FileOutputStream out = new FileOutputStream("index.html");
+            out.write(pageWeb.toHtml().getBytes());
+            out.close();
+        }catch(IOException e){
+        }
 
     }
 
     public static void main(String[] args) {
-//        test1();
+        test1();
         test2();
 
     }
