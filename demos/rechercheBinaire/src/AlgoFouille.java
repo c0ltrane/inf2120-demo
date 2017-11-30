@@ -26,7 +26,6 @@ public class AlgoFouille {
         }
         return indiceElement;
     }
-
     public static < E extends Comparable< E > > int FouilleBinaireR( E [] tableau, E element, int debut, int fin ) throws ElementNonPresent {
         int resultat = 0;
         if(debut <= fin){
