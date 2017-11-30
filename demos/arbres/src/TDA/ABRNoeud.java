@@ -1,4 +1,4 @@
-/**
+package TDA; /**
  * Created by thomas on 11/30/17.
  */
 
@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Chaque ABRNoeud est a la fois un noeud et un arbre.
+ * Chaque TDA.ABRNoeud est a la fois un noeud et un arbre.
  * Ils contiennent un pointeur vers le sous arbre de gauche et un autre
  * vers le sous arbre de droite.
  *
@@ -30,7 +30,7 @@ public class ABRNoeud< E extends Comparable< E > > {
      * @invariant
      * element != null
      */
-    protected E _element;
+    public E _element;
 
 
     /**
@@ -38,7 +38,7 @@ public class ABRNoeud< E extends Comparable< E > > {
      * @invariant
      * $\forall x \in gauche | x < element$
      */
-    protected ABRNoeud< E > _gauche;
+    public ABRNoeud< E > _gauche;
 
 
     /**
@@ -46,7 +46,7 @@ public class ABRNoeud< E extends Comparable< E > > {
      * @invariant
      * $\forall x \in droite | x > element$
      */
-    protected ABRNoeud< E > _droite;
+    public ABRNoeud< E > _droite;
 
 
     public enum Parcours {
