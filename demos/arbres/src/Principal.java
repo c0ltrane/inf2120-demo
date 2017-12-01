@@ -44,14 +44,18 @@ public class Principal {
     }
 
     public static void test2() {
-        DOM pageWeb = new DOM();
-        pageWeb.inserer("head");
-        pageWeb.inserer("body");
-        pageWeb.chercher("head")
-                .inserer("meta");
+        DOM document = new DOM();
 
-        DOMNoeud<String> body = pageWeb.chercher("body");
+//        document.inserer("nana");
+        DOMNoeud<String> racine = document.chercher("html");
 
+        racine.inserer("head");
+        racine.inserer("body");
+
+        DOMNoeud<String> head = document.chercher("head");
+        head.inserer("meta");
+
+        DOMNoeud<String> body = document.chercher("body");
         body.inserer("h1", "Hello World!");
         body.inserer("h2");
         body.inserer("div");
@@ -59,10 +63,10 @@ public class Principal {
         body.chercher("div")
                 .inserer("p", "This is my web page");
 
-        System.out.println(pageWeb.toHtml());
+        System.out.println(document.toHtml());
         try{
             FileOutputStream out = new FileOutputStream("index.html");
-            out.write(pageWeb.toHtml().getBytes());
+            out.write(document.toHtml().getBytes());
             out.close();
         }catch(IOException e){
         }
@@ -70,7 +74,7 @@ public class Principal {
     }
 
     public static void main(String[] args) {
-        test1();
+//        test1();
         test2();
 
     }

@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * Created by thomas on 11/30/17.
  */
-public class DOMNoeud<E extends Comparable<E> >{
+public class DOMNoeud<E extends Comparable< E > >{
     protected E _tag;
     protected E _valeur;
-    protected List<DOMNoeud> _enfants;
+    protected ArrayList<DOMNoeud> _enfants;
 
     public DOMNoeud(E elem){
         _tag = elem;
@@ -36,12 +36,18 @@ public class DOMNoeud<E extends Comparable<E> >{
     public DOMNoeud<E> chercher(E elem){
 
         DOMNoeud resultat = null;
-        for( DOMNoeud enfant : _enfants){
-            if(enfant._tag.equals(elem)){
-               resultat = enfant;
-               break;
+        if(_tag.compareTo(elem) == 0){
+            resultat = this;
+        }
+        else {
+            for( DOMNoeud enfant : _enfants){
+                resultat = enfant.chercher(elem);
+                if(resultat != null){
+                    break;
+                }
             }
         }
+
         return resultat;
     }
 }

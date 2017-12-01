@@ -19,14 +19,6 @@ public class DOM {
         return racine.chercher(elem);
     }
 
-    public void inserer(String elem){
-        racine.inserer(elem);
-    }
-
-    public void inserer(String elem, String valeur){
-        racine.inserer(elem, valeur);
-    }
-
     public String toHtml(){
         String html = "<!doctype html>\n";
         html += toHtmlRec(racine, "", -1);
