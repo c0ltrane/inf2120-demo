@@ -18,8 +18,8 @@
 
 ### Trivia:
 
-[implementation d'une Blockchain](/demos/stream/src/Trivia/blockchain)
-[implementation du DOM d'une page html](/demos/arbres/src/DOM)
+* [implementation d'une Blockchain](/demos/stream/src/Trivia/blockchain)
+* [implementation du DOM d'une page html](/demos/arbres/src/DOM)
 
 ### Liens utiles pour le cours
 
