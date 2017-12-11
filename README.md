@@ -13,7 +13,7 @@
 9. Demo 9 - [Interface utilisateur](/demos/interfaceUtilisateur)
 10. Demo 10 - [Recherche Binaire](/demos/rechercheBinaire)
 11. Demo 11 - [ABR](/demos/arbres)
-12. Demo 12 - Tri
+12. Demo 12 - [Tris](/demos/tris)
 
 
 ### Trivia:
